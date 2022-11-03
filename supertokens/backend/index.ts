@@ -6,6 +6,7 @@ import {middleware, errorHandler, SessionRequest} from "supertokens-node/framewo
 import {SuperTokensConfig} from "./config";
 import UserRoles from "supertokens-node/recipe/userroles";
 import {constants} from "http2";
+import ThirdPartyEmailPassword from "supertokens-node/recipe/thirdpartyemailpassword";
 
 supertokens.init(SuperTokensConfig);
 
@@ -30,12 +31,12 @@ app.get("/sessioninfo", verifySession(), async (req: SessionRequest, res) => {
         sessionHandle: session!.getHandle(),
         userId: session!.getUserId(),
         accessTokenPayload: session!.getAccessTokenPayload(),
+        userData: await ThirdPartyEmailPassword.getUserById(session!.getUserId())
     });
 });
 
 app.get("/unsecured", (req, res) => {
     res.send('This is an unsecured endpoint payload');
-
 });
 
 app.get("/user",
