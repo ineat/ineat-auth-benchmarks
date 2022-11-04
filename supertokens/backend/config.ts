@@ -2,6 +2,8 @@ import Session from "supertokens-node/recipe/session";
 import {TypeInput} from "supertokens-node/types";
 import UserRoles from "supertokens-node/recipe/userroles";
 import ThirdPartyEmailPassword from "supertokens-node/recipe/thirdpartyemailpassword";
+import Dashboard from "supertokens-node/recipe/dashboard";
+
 import jwt_decode from "jwt-decode";
 
 export const SuperTokensConfig: TypeInput = {
@@ -20,6 +22,9 @@ export const SuperTokensConfig: TypeInput = {
         // EmailPassword.init(),
         Session.init(),
         UserRoles.init(),
+        Dashboard.init({
+            apiKey: "test"
+        }),
         ThirdPartyEmailPassword.init({
             // contactMethod: "EMAIL", // This example will work with any contactMethod
             // flowType: "USER_INPUT_CODE_AND_MAGIC_LINK", // This example will work with any flowType

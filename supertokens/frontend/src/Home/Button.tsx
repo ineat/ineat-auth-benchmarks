@@ -1,6 +1,6 @@
-export default function Logout(props: { logoutClicked: () => void }) {
-    let logoutClicked = props.logoutClicked;
-
+export default function Button(props: { buttonClicked: () => void , label: string}) {
+    let logoutClicked = props.buttonClicked;
+    let buttonLabel = props.label;
     return (
         <div
             style={{
@@ -16,7 +16,9 @@ export default function Logout(props: { logoutClicked: () => void }) {
                 onClick={logoutClicked}
                 style={{
                     display: "flex",
-                    width: "116px",
+                    // width: "116px",
+                    margin: "15px",
+                    padding: "5px",
                     height: "42px",
                     backgroundColor: "#000000",
                     borderRadius: "10px",
@@ -27,7 +29,7 @@ export default function Logout(props: { logoutClicked: () => void }) {
                     fontWeight: "bold",
                 }}
             >
-                SIGN OUT
+                {buttonLabel}
             </div>
         </div>
     );
